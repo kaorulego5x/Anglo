@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct angloApp: App {
+    private let appViewModel = AppViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appViewModel)
         }
     }
 }
