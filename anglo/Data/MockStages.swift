@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+enum StageType {
+    case single, idiom, test
+}
+
+let mockStages : [Stage] = [
+    Stage(word: "get", roadMap: [2, 4])
+]

@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Phrase {
+    var phrase: String
+    var meaning: String
+}

@@ -13,131 +13,185 @@ let voice = AVSpeechSynthesisVoice.init(language: "en-US")
 let haptics = UINotificationFeedbackGenerator()
 
 struct HomeView: View {
-    @Binding var tab: Tab
+    @EnvironmentObject var appViewModel: AppViewModel
     @State var selectedStage: Stage?
-    @State var focusStageIndex: Int = 3
-    @State var selectedWordIndex: Int = 0
-    
-    private let words = ["Get", "Have", "Run", "Give"]
-    private let nextStageIndex = 3
-    
-    var body: some View {
-        VStack(spacing:0){
-                
-            VStack(alignment: .leading, spacing:0){
-                VStack(alignment: .leading){
-                    HStack(){
-                        Spacer()
-                        
-                        Button(action:{}){
-                            FAText(iconName: "sliders-h", size: 20, style:.solid)
-                                .foregroundColor(.white)
-                        }
-                        .padding([.top, .trailing], 24)
-                    }
-                    
-                    Spacer()
-                    
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack(alignment:.bottom, spacing:24){
-                            ForEach(0..<words.count) { wordIndex in
-                                let selected = (wordIndex == selectedWordIndex)
-                                Button(action:{selectedWordIndex = wordIndex}){
-                                    Text(words[wordIndex])
-                                        .font(.custom("Montserrat-Bold", size:selected ? 48 : 32))
-                                        .foregroundColor(Color.white.opacity(selected ? 1 : 0.2))
-                                }
-                            }
-                        }
-                        .padding(.bottom)
-                        .padding(.horizontal, 40)
-                    }
-                }
-                    
-                Rectangle()
-                    .fill(Color("bg"))
-                    .frame(height:40)
-                    .cornerRadius(40, corners: [.topLeft, .topRight])
-                    .frame(height:40)
-            }
-            .frame(height:160)
-            .background(LinearGradient(gradient:gradientColors, startPoint: .top, endPoint: .bottom).ignoresSafeArea())
-            //.edgesIgnoringSafeArea(.top)
-            
-            
-            HStack(alignment:.bottom){
-                Circle()
-                    .strokeBorder(Color("boxbg"), lineWidth: 40)
-                    .frame(width:120, height:120)
-                    .padding(.trailing, 32)
-                
-                VStack(spacing: 12){
-                    HStack(spacing:12){
-                        VStack(){
-                            Text("マスター")
-                                .font(.custom("NotoSansJP-Regular", size:8))
-                                .foregroundColor(Color("txt"))
-                            Text("21")
-                                .font(.custom("Montserrat-Bold", size:24))
-                                .foregroundColor(Color("txt"))
-                        }
-                        
-                        VStack(){
-                            Text("苦手")
-                                .font(.custom("NotoSansJP-Regular", size:8))
-                                .foregroundColor(Color("txt"))
-                            Text("18")
-                                .font(.custom("Montserrat-Bold", size:24))
-                                .foregroundColor(Color("txt"))
-                        }
-                        
-                        VStack(){
-                            Text("未学習")
-                                .font(.custom("NotoSansJP-Regular", size:8))
-                                .foregroundColor(Color("txt"))
-                            Text("10")
-                                .font(.custom("Montserrat-Bold", size:24))
-                                .foregroundColor(Color("txt"))
-                        }
-                    }
-                    
-                    Button(action:{}){
-                        Text("苦手だけ復習")
-                            .font(.custom("NotoSansJP-Medium", size:12))
-                            .foregroundColor(.white)
-                            .frame(height:48)
-                            .frame(maxWidth:.infinity)
-                            .background(LinearGradient(gradient: gradientColors, startPoint: .leading, endPoint: .trailing))
-                            .cornerRadius(24)
-                    }
-                }
-            }
-            .padding(.horizontal, 40)
-            .padding(.bottom, 24)
-            
-            if let stage = selectedStage {
-                let sum = stage.roadMap.reduce(0, +)
-                ScrollView(){
-                    VStack(spacing:0){
-                        ForEach(0 ..< sum, id:\.self){ index in
-                            ActivityCapsule(index:index, stage:stage, nextStageIndex:nextStageIndex, focusStageIndex:$focusStageIndex, tab:$tab)
-                        }
-                        
-                    }
-                }
-            }
-            
-            Spacer()
-        }
-        .background(Color("bg").ignoresSafeArea())
-        .onAppear(){
-            self.fetchStageData()
+    @State var focusStageIndex: Int = 0
+    @State var selectedWordIndex: Int = 0 {
+        didSet {
+            self.selectedStage = appViewModel.stageList[selectedWordIndex]
         }
     }
     
-    func fetchStageData() -> Void {
-        if let stage = mockStages.first(where: {$0.word == "get"}){
-            selectedStage = stage
+    var body: some View {
+        GeometryReader{ geometry in
+            VStack(){
+                ZStack(){
+                    Text("Getit")
+                        .title()
+                    
+                    HStack(){
+                        Spacer()
+                        Icon("help", size:21)
+                            .foregroundColor(.subtext)
+                    }
+                }
+                
+                VStack(){
+                    HStack(){
+                        HStack(){
+                            Icon("progress", size:14)
+                                .foregroundColor(.subtext)
+                            Text("Progress")
+                                .boxtitle()
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action:{}){
+                            Text("Detail")
+                        }
+                    }
+                    HStack(){
+                        HStack(){
+                            Text("Learn")
+                            Spacer()
+                            Text("2/3")
+                        }
+                        .frame(maxWidth:.infinity)
+                        
+                    }
+                }
+                .padding()
+                .background(Color.boxbg)
+                .cornerRadius(20)
+            }
+            
+            VStack(spacing:0){
+                    
+                VStack(alignment: .leading, spacing:0){
+                    VStack(alignment: .leading){
+                        HStack(){
+                            Spacer()
+                        }
+                        
+                        Spacer()
+                        
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack(alignment:.bottom, spacing:24){
+                                ForEach(0..<words.count) { wordIndex in
+                                    let selected = (wordIndex == selectedWordIndex)
+                                    Button(action:{selectedWordIndex = wordIndex}){
+                                        Text(words[wordIndex])
+                                            .font(.custom("Montserrat-Bold", size:selected ? 48 : 32))
+                                            .foregroundColor(Color.white.opacity(selected ? 1 : 0.2))
+                                    }
+                                }
+                            }
+                            .padding(.bottom)
+                            .padding(.horizontal, 40)
+                        }
+                    }
+                        
+                    Rectangle()
+                        .fill(Color("bg"))
+                        .frame(height:40)
+                        .cornerRadius(40, corners: [.topLeft, .topRight])
+                        .frame(height:40)
+                }
+                .frame(height:160)
+                .background(LinearGradient(gradient:gradientColors, startPoint: .top, endPoint: .bottom).ignoresSafeArea())
+                //.edgesIgnoringSafeArea(.top)
+                
+                
+                HStack(alignment:.bottom){
+                    Circle()
+                        .strokeBorder(Color("boxbg"), lineWidth: 40)
+                        .frame(width:120, height:120)
+                        .padding(.trailing, 32)
+                    
+                    VStack(spacing: 12){
+                        HStack(spacing:12){
+                            VStack(){
+                                Text("マスター")
+                                    .font(.custom("NotoSansJP-Regular", size:8))
+                                    .foregroundColor(Color("txt"))
+                                Text(String(appViewModel.progressList[selectedWordIndex].score[0]))
+                                    .font(.custom("Montserrat-Bold", size:24))
+                                    .foregroundColor(Color("txt"))
+                            }
+                            
+                            VStack(){
+                                Text("苦手")
+                                    .font(.custom("NotoSansJP-Regular", size:8))
+                                    .foregroundColor(Color("txt"))
+                                Text(String(appViewModel.progressList[selectedWordIndex].score[1]))
+                                    .font(.custom("Montserrat-Bold", size:24))
+                                    .foregroundColor(Color("txt"))
+                            }
+                            
+                            VStack(){
+                                Text("未学習")
+                                    .font(.custom("NotoSansJP-Regular", size:8))
+                                    .foregroundColor(Color("txt"))
+                                Text(String(appViewModel.progressList[selectedWordIndex].score[2]))
+                                    .font(.custom("Montserrat-Bold", size:24))
+                                    .foregroundColor(Color("txt"))
+                            }
+                        }
+                        
+                        Button(action:{}){
+                            Text("苦手だけ復習")
+                                .font(.custom("NotoSansJP-Medium", size:12))
+                                .foregroundColor(.white)
+                                .frame(height:48)
+                                .frame(maxWidth:.infinity)
+                                .background(LinearGradient(gradient: gradientColors, startPoint: .leading, endPoint: .trailing))
+                                .cornerRadius(24)
+                        }
+                    }
+                }
+                .padding(.horizontal, 40)
+                .padding(.bottom, 24)
+                
+                if let stage = selectedStage {
+                    let sum = stage.roadMap.reduce(0, +)
+                    ZStack(){
+                        ScrollView(showsIndicators:false){
+                            VStack(spacing:0){
+                                
+                                ForEach(0 ..< sum, id:\.self){ index in
+                                    ActivityCapsule(index:index, stage:stage, nextStageIndex:appViewModel.nextLevel, focusStageIndex:$focusStageIndex, selectedWordIndex: selectedWordIndex, currentWordIndex: appViewModel.wordIndex, word: words[selectedWordIndex])
+                                }
+                                .disabled(selectedWordIndex > appViewModel.wordIndex)
+                                
+                                Spacer().frame(height:geometry.safeAreaInsets.bottom)
+                            }
+                        }
+                        .opacity(selectedWordIndex > appViewModel.wordIndex ? 0.2 : 1)
+                        
+                        if(selectedWordIndex > appViewModel.wordIndex){
+                            VStack(spacing: 8){
+                                FAText(iconName:"lock", size:32)
+                                    .foregroundColor(.white)
+                                
+                                Text("locked")
+                                    .font(.custom("Montserrat-Medium", size:16))
+                                    .foregroundColor(.white)
+                            }
+                           
+                        }
+                    }
+                }
+                
+                Spacer()
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .background(Color("bg").ignoresSafeArea())
+            .onAppear(){
+                self.selectedStage = appViewModel.stageList[selectedWordIndex]
+                self.focusStageIndex = appViewModel.nextLevel
+                self.selectedWordIndex = appViewModel.wordIndex
+            }
         }
     }
 }
@@ -164,7 +218,7 @@ internal class Speaker: NSObject, ObservableObject {
             let utterance = AVSpeechUtterance(string: text)
             utterance.voice = AVSpeechSynthesisVoice(language: language)
             
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: AVAudioSession.CategoryOptions.mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
             self.synthesizer.speak(utterance)
         } catch let error {
@@ -213,23 +267,27 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 struct ActivityCapsule: View {
+    @EnvironmentObject var appViewModel: AppViewModel
     var index: Int
     var stage: Stage
     var nextStageIndex: Int
     @Binding var focusStageIndex: Int
-    @Binding var tab: Tab
+    var selectedWordIndex: Int
+    var currentWordIndex: Int
+    var word: String
     
     var body: some View {
         let tilSingle = stage.roadMap[0]
-        let tilIdiom = stage.roadMap[0] + stage.roadMap[1]
-        let sum = stage.roadMap[0] + stage.roadMap[1]
-        let title = index < tilSingle ? "単体での使い方" : (index < tilIdiom ? "イディオム" : "テスト")
-        let displayIndex = index < tilSingle ? index : index - tilSingle
+        let tilIdiom = tilSingle + stage.roadMap[1]
+        let tilFixed = tilIdiom + stage.roadMap[2]
+        let sum = tilFixed
+        let title = index < tilSingle ? "単体での使い方" : (index < tilIdiom ? "イディオム" : "定型表現")
+        let displayIndex = index < tilSingle ? index : (index < tilIdiom ? index - tilSingle : index - tilIdiom)
         let spaceHeight = 60
-        let completed = index < nextStageIndex
-        let upnext = (index == nextStageIndex)
-        let focused = (index == focusStageIndex)
-        let locked = index > nextStageIndex
+        var completed = selectedWordIndex < currentWordIndex ? true : (selectedWordIndex == currentWordIndex ?  (index < nextStageIndex) : false)
+        let upnext = (index == nextStageIndex && selectedWordIndex == currentWordIndex)
+        let focused = (selectedWordIndex <= currentWordIndex) && (index == focusStageIndex)
+        let locked = selectedWordIndex < currentWordIndex ? false : (selectedWordIndex == currentWordIndex ?  (index > nextStageIndex) : true)
         
         HStack(){
             if(!focused){
@@ -238,7 +296,7 @@ struct ActivityCapsule: View {
                         let lineColor = completed ? Color("maingrad1") : Color("boxbg")
                         HStack(){}
                             .frame(width:2, height:CGFloat(spaceHeight/2))
-                            .background(upnext ? Color("maingrad1") : (index != 0 ? lineColor : Color.clear))
+                            .background((upnext && index != 0) ? Color("maingrad1") : (index != 0 ? lineColor : Color.clear))
                         
                         HStack(){}
                             .frame(width:2, height:CGFloat(spaceHeight/2))
@@ -304,17 +362,19 @@ struct ActivityCapsule: View {
                 
                 if(focused){
                     Button(action:{
-                        withAnimation(.easeOut(duration:0.2)){
-                            tab = .loading
-                        }
+                        appViewModel.fetchActivitiesData(selectedWordIndex:selectedWordIndex, type:(index < tilSingle ? .single : (index < tilIdiom ? .idiom : .fixed)), index:index, typeIndex: displayIndex)
                     }){
                         FAText(iconName:completed ? "redo-alt" : (locked ? "lock" : "play"), size:16, style:.solid)
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color("txt"))
                             .frame(width:56, height:56)
                             .background(LinearGradient(gradient:locked ? Gradient(colors:[Color("bg"), Color("bg")]) : gradientColors, startPoint:.topLeading, endPoint:.bottomTrailing))
                             .cornerRadius(32)
                     }
                     .disabled(locked)
+                } else if(locked){
+                    FAText(iconName:"lock", size:16, style:.solid)
+                        .foregroundColor(Color("bg"))
+                        .padding(.trailing, 12)
                 }
             }
             .padding(focused ? 12 : 5)
@@ -329,60 +389,5 @@ struct ActivityCapsule: View {
             }
         }
         .padding(.horizontal, focused ? 8 : 40)
-        
-            /*HStack(spacing:0){
-                ZStack(){
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width:48, height:48)
-                               
-                    Text(String(index+1))
-                        .font(.custom("Montserrat-Bold", size:18))
-                        .foregroundColor(Color("txt"))
-                }
-                .padding(.leading, 4)
-                .padding(.trailing, 18)
-                        
-                VStack(alignment:.leading, spacing:4){
-                    Text("Next up:")
-                        .font(.custom("Montserrat-Medium", size:12))
-                        .foregroundColor(Color("txt"))
-                        .offset(y:1)
-                            
-                    HStack(spacing:0){
-                        Text(title)
-                            .font(.custom("NotoSansJP-Bold", size:18))
-                            .foregroundColor(Color("txt"))
-                            .padding(.trailing, 6)
-                                
-                        Text("#\(displayIndex+1)")
-                            .font(.custom("Montserrat-Bold", size:18))
-                            .foregroundColor(Color("txt"))
-                            .offset(y:1)
-                    }
-                }
-                
-                Spacer()
-                        
-                Button(action:{
-                    withAnimation(.easeOut(duration:0.2)){
-                        tab = .loading
-                    }
-                }){
-                    FAText(iconName:"play", size:16)
-                        .foregroundColor(Color.white)
-                        .frame(width:56, height:56)
-                        .background(LinearGradient(gradient:gradientColors, startPoint:.topLeading, endPoint:.bottomTrailing))
-                        .cornerRadius(32)
-                }
-            }
-            .padding(12)
-            .overlay(Capsule()
-                .stroke(LinearGradient(gradient:gradientColors, startPoint:.topLeading, endPoint:.bottomTrailing), lineWidth:3)
-            )
-            .background(Color("boxbg"))
-            .cornerRadius(40)
-            .padding(.horizontal, 8)
-        }*/
     }
 }

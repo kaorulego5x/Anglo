@@ -14,8 +14,8 @@ struct RearrangeView: View {
     @State var num: Int = 0 {
         didSet {
             if (num >= usecases.count){
-                num = 0
                 appViewModel.handleExitActivity()
+                num = 0
             }
             filled = false
             checked = false
@@ -39,12 +39,23 @@ struct RearrangeView: View {
     @State var usecases: [Usecase] = [Usecase]()
     @State var arrayFilled: Bool = false
     
+    func extractSentenceForDisplay(_ sentence: String) -> String {
+        var tempSentence = sentence
+        if let i = tempSentence.firstIndex(of: "["){
+            tempSentence.remove(at: i)
+        }
+        if let i = tempSentence.firstIndex(of: "]"){
+            tempSentence.remove(at: i)
+        }
+        return tempSentence
+    }
+    
     var body: some View {
         VStack(){
             if(arrayFilled){
                 HStack(spacing:16){
                     VStack(alignment: .leading, spacing:8){
-                        Text("Phrases - Get Pt.1")
+                        Text("\(ActivityTypeText(appViewModel.activityType)) - \(words[appViewModel.selectedWordIndex].capitalizingFirstLetter()) Pt.\(appViewModel.typeIndex + 1)")
                             .font(.custom("Montserrat-Medium", size:14))
                             .foregroundColor(Color("txt"))
                         
@@ -90,13 +101,13 @@ struct RearrangeView: View {
                 
                 Spacer()
                 
-                Text(usecases[num].choices[0])
+                Text(appViewModel.activityType == .fixed ? usecases[num].sentence : usecases[num].choices[0])
                     .font(.custom("NotoSansJP-Medium", size:20))
                     .frame(maxWidth:.infinity, alignment: .leading)
                     .padding(.bottom, 0)
                     
                 VStack(){
-                    AnswerCloudView(components:components, randomOrder: $answerArray, answerArray: $answerArray, checked: $checked)
+                    AnswerCloudView(components:components, answerArray: $answerArray, checked: $checked)
                     Spacer()
                 }
                 .frame(height:100)
@@ -155,7 +166,13 @@ struct RearrangeView: View {
                 
                 Spacer()
                 
-                Button(action:{if checked { num += 1 } else { self.handleAnswer() }}){
+                Button(action:{
+                    if checked {
+                        num += 1;
+                    } else {
+                        self.handleAnswer()
+                    }
+                }){
                     ZStack(){
                         Capsule()
                             .fill(LinearGradient(gradient: filled ? gradientColors : Gradient(colors:[Color("boxbg"), Color("boxbg")]),startPoint: .leading, endPoint: .trailing))
@@ -180,7 +197,11 @@ struct RearrangeView: View {
     }
     
     func handleAnswer() -> Void {
-        isCorrect = Array(0 ..< components.count) == answerArray
+        var answerComponents = [String]()
+        for answerIndex in answerArray {
+            answerComponents.append(components[answerIndex])
+        }
+        self.isCorrect = (components == answerComponents)
         haptics.notificationOccurred(isCorrect ? .success : .error)
         withAnimation(.easeOut(duration:0.2)){ checked = true }
     }
@@ -190,17 +211,18 @@ struct RearrangeView: View {
     }
     
     func handleResetComponents(_ useCaseIndex: Int) {
-        var baseSentence:String = usecases[useCaseIndex].sentence
-        if usecases[useCaseIndex].sentence.hasSuffix("?") {
+        var baseSentence:String = (appViewModel.activityType == .fixed ? usecases[useCaseIndex].choices[0] : usecases[useCaseIndex].sentence)
+        baseSentence = extractSentenceForDisplay(baseSentence)
+        if baseSentence.hasSuffix("?") {
             suffix = "?"
             baseSentence = String(baseSentence.dropLast()).lowercased()
-        } else if usecases[useCaseIndex].sentence.hasSuffix(".") {
+        } else if baseSentence.hasSuffix(".") {
             suffix = "."
             baseSentence = String(baseSentence.dropLast()).lowercased()
-        } else if usecases[useCaseIndex].sentence.hasSuffix("!") {
+        } else if baseSentence.hasSuffix("!") {
             suffix = "."
             baseSentence = String(baseSentence.dropLast()).lowercased()
-        } else if usecases[useCaseIndex].sentence.hasSuffix("!?") {
+        } else if baseSentence.hasSuffix("!?") {
             suffix = "!?"
             baseSentence = String(baseSentence.dropLast().dropLast()).lowercased()
         }
@@ -214,7 +236,6 @@ struct RearrangeView: View {
 
 struct AnswerCloudView: View {
     var components: [String]
-    @Binding var randomOrder: [Int]
     @Binding var answerArray: [Int]
     @Binding var checked: Bool
 
@@ -278,7 +299,7 @@ struct AnswerCloudView: View {
                     .padding(8)
                     .overlay(
                         RoundedRectangle(cornerRadius:8)
-                            .stroke(LinearGradient(gradient: !checked ? Gradient(colors:[Color("boxbg")]) : (displayIndex == answerIndex ? gradientColors : incorrectGradientColors), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth:1)
+                            .stroke(LinearGradient(gradient: !checked ? Gradient(colors:[Color("boxbg")]) : (components[displayIndex] == components[answerIndex] ? gradientColors : incorrectGradientColors), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth:1)
                     )
             } else {
                 Text("aaaa")

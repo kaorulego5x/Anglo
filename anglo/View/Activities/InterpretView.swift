@@ -10,7 +10,8 @@ import AVFoundation
 
 struct InterpretView: View {
     @EnvironmentObject var appViewModel: AppViewModel
-    @State var choiceIndexConverter = [0,1,2]
+    @State var randomIdiomChoiceIndex = [0,1,2]
+    @State var randomFixedChoiceIndex = [0,1]
     @State var num = 0 {
         didSet{
             self.speaker.stop();
@@ -20,7 +21,8 @@ struct InterpretView: View {
                 num = 0
                 appViewModel.tab = .rearrange
             }
-            choiceIndexConverter.shuffle()
+            randomIdiomChoiceIndex.shuffle()
+            randomFixedChoiceIndex.shuffle()
             if(num != 0){ self.speechText(usecases[num].sentence) }
         }
     }
@@ -33,12 +35,39 @@ struct InterpretView: View {
     @State var usecases: [Usecase] = [Usecase]()
     @State var arrayFilled: Bool = false
     
+    func makeView(_ geometry: GeometryProxy) {
+            DispatchQueue.main.async { self.frame = geometry.size }
+        }
+    
+    func handleAnswer(_ isCorrect: Bool) {
+        self.isCorrect = isCorrect
+        withAnimation(.easeOut(duration:0.2)) {self.answered = true}
+        haptics.notificationOccurred(isCorrect ? .success : .error)
+    }
+    
+    func speechText(_ text:String){
+        if(appViewModel.activityType != .fixed){
+            self.speaker.speak(text, language: "en-US")
+        }
+    }
+    
+    func extractSentenceForDisplay(_ sentence: String) -> String {
+        var tempSentence = sentence
+        if let i = tempSentence.firstIndex(of: "["){
+            tempSentence.remove(at: i)
+        }
+        if let i = tempSentence.firstIndex(of: "]"){
+            tempSentence.remove(at: i)
+        }
+        return tempSentence
+    }
+    
     var body: some View {
         VStack(){
             if(arrayFilled){
                 HStack(spacing:16){
                     VStack(alignment: .leading, spacing:8){
-                        Text("Phrases - Get Pt.1")
+                        Text("\(ActivityTypeText(appViewModel.activityType)) - \(words[appViewModel.selectedWordIndex].capitalizingFirstLetter()) Pt.\(appViewModel.typeIndex + 1)")
                             .font(.custom("Montserrat-Medium", size:14))
                             .foregroundColor(Color("txt"))
                         
@@ -84,8 +113,8 @@ struct InterpretView: View {
                 
                 Spacer()
                 
-                Text(usecases[num].sentence)
-                    .font(.custom("Montserrat-Medium", size:30))
+                Text(extractSentenceForDisplay(usecases[num].sentence))
+                    .font(appViewModel.activityType == .fixed ? .custom("NotoSansJP-Medium", size:30) : .custom("Montserrat-Medium", size:30))
                     .frame(maxWidth:.infinity, alignment: .leading)
                 
                 Spacer()
@@ -121,12 +150,12 @@ struct InterpretView: View {
                 .offset(y: answered ? 0 : 6)
                 
                 
-                ForEach(0..<3){ i in
-                    let choiceIndex = choiceIndexConverter[i]
+                ForEach(0..<usecases[num].choices.count){ i in
+                    let choiceIndex = appViewModel.activityType == .fixed ? randomFixedChoiceIndex[i] : randomIdiomChoiceIndex[i]
                     Button(action:{ handleAnswer(choiceIndex == 0) }){
                         HStack(){
                             Text(usecases[num].choices[choiceIndex])
-                                .font(.custom("NotoSansJP-Medium", size:12))
+                                .font(appViewModel.activityType == .fixed ? .custom("Montserrat-Medium", size:12) : .custom("NotoSansJP-Medium", size:12))
                                 .foregroundColor(Color("txt"))
                             
                             Spacer()
@@ -185,30 +214,10 @@ struct InterpretView: View {
         .onAppear(){
             self.usecases = appViewModel.usecases
             self.arrayFilled = true
-            self.choiceIndexConverter.shuffle()
-            do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: AVAudioSession.CategoryOptions.mixWithOthers)
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print(error)
-            }
+            self.randomIdiomChoiceIndex.shuffle()
+            self.randomFixedChoiceIndex.shuffle()
             self.speechText(usecases[num].sentence)
         }
-    }
-    
-    
-    func makeView(_ geometry: GeometryProxy) {
-            DispatchQueue.main.async { self.frame = geometry.size }
-        }
-    
-    func handleAnswer(_ isCorrect: Bool) {
-        self.isCorrect = isCorrect
-        withAnimation(.easeOut(duration:0.2)) {self.answered = true}
-        haptics.notificationOccurred(isCorrect ? .success : .error)
-    }
-    
-    func speechText(_ text:String){
-        self.speaker.speak(text, language: "en-US")
     }
 }
 

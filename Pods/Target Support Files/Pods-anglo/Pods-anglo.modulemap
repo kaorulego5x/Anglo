@@ -1,0 +1,6 @@
+framework module Pods_anglo {
+  umbrella header "Pods-anglo-umbrella.h"
+
+  export *
+  module * { export * }
+}

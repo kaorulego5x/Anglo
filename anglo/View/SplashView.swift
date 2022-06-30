@@ -9,7 +9,14 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(){
+            RadialGradient(gradient: Gradient(colors:[Color("bggrad1"), Color("bggrad2")]), center: .topLeading, startRadius: /*@START_MENU_TOKEN@*/5/*@END_MENU_TOKEN@*/, endRadius: /*@START_MENU_TOKEN@*/500/*@END_MENU_TOKEN@*/)
+                .ignoresSafeArea()
+            
+            Text("G")
+                .font(.custom("Montserrat-Bold", size:84))
+                .foregroundColor(Color.white)
+        }
     }
 }
 

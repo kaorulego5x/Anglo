@@ -3,23 +3,92 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E874850EF93A82C41ABE383 /* Pods_anglo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B534DAA2319FA4880ED336 /* Pods_anglo.framework */; };
+		CD0245BE27524D61004A2047 /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD0245BC27524D61004A2047 /* NotoSansJP-Medium.otf */; };
+		CD0245BF27524D61004A2047 /* NotoSansJP-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD0245BD27524D61004A2047 /* NotoSansJP-Regular.otf */; };
+		CD0245C127524EEA004A2047 /* PhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0245C027524EEA004A2047 /* PhraseView.swift */; };
+		CD0245C527525312004A2047 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0245C427525312004A2047 /* Usecase.swift */; };
+		CD0245C727525ABE004A2047 /* RearrangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0245C627525ABE004A2047 /* RearrangeView.swift */; };
+		CD0245C927529052004A2047 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0245C827529052004A2047 /* HomeView.swift */; };
+		CD0245CB275336B5004A2047 /* Stage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0245CA275336B5004A2047 /* Stage.swift */; };
+		CD0245CD275336D8004A2047 /* MockStages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0245CC275336D8004A2047 /* MockStages.swift */; };
+		CD0245D02753408F004A2047 /* FASwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CD0245CF2753408F004A2047 /* FASwiftUI */; };
+		CD0245D82753413E004A2047 /* icons.json in Resources */ = {isa = PBXBuildFile; fileRef = CD0245D72753413E004A2047 /* icons.json */; };
+		CD0245DC27534150004A2047 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD0245D927534150004A2047 /* Font Awesome 5 Free-Solid-900.otf */; };
+		CD0245DD27534150004A2047 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD0245DA27534150004A2047 /* Font Awesome 5 Brands-Regular-400.otf */; };
+		CD0245DE27534150004A2047 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD0245DB27534150004A2047 /* Font Awesome 5 Free-Regular-400.otf */; };
+		CD0245E027534E9D004A2047 /* NotoSansJP-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CD0245DF27534E9D004A2047 /* NotoSansJP-Bold.otf */; };
+		CD0245E22754AD5B004A2047 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0245E12754AD5B004A2047 /* LoadingView.swift */; };
+		CD0245E52754B1EC004A2047 /* Shapes in Frameworks */ = {isa = PBXBuildFile; productRef = CD0245E42754B1EC004A2047 /* Shapes */; };
+		CD0245E82754B292004A2047 /* PolyKit in Frameworks */ = {isa = PBXBuildFile; productRef = CD0245E72754B292004A2047 /* PolyKit */; };
+		CD0245EA2754ED07004A2047 /* BackPatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0245E92754ED07004A2047 /* BackPatternView.swift */; };
+		CD0E75FC27C0926F00E43684 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0E75FB27C0926F00E43684 /* IconView.swift */; };
 		CD15FF4C2752212E00F890AB /* angloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15FF4B2752212E00F890AB /* angloApp.swift */; };
 		CD15FF4E2752212E00F890AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15FF4D2752212E00F890AB /* ContentView.swift */; };
 		CD15FF502752213100F890AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF4F2752213100F890AB /* Assets.xcassets */; };
 		CD15FF532752213100F890AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF522752213100F890AB /* Preview Assets.xcassets */; };
+		CD15FF64275222F900F890AB /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF5B275222F800F890AB /* Montserrat-Medium.ttf */; };
+		CD15FF65275222F900F890AB /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF5C275222F800F890AB /* Montserrat-Thin.ttf */; };
+		CD15FF66275222F900F890AB /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF5D275222F800F890AB /* Montserrat-Bold.ttf */; };
+		CD15FF67275222F900F890AB /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF5E275222F900F890AB /* Montserrat-SemiBold.ttf */; };
+		CD15FF68275222F900F890AB /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF5F275222F900F890AB /* Montserrat-Black.ttf */; };
+		CD15FF69275222F900F890AB /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF60275222F900F890AB /* Montserrat-Regular.ttf */; };
+		CD15FF6A275222F900F890AB /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF61275222F900F890AB /* Montserrat-ExtraLight.ttf */; };
+		CD15FF6B275222F900F890AB /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF62275222F900F890AB /* Montserrat-Light.ttf */; };
+		CD15FF6C275222F900F890AB /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD15FF63275222F900F890AB /* Montserrat-ExtraBold.ttf */; };
+		CD15FF6F2752285A00F890AB /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15FF6E2752285A00F890AB /* Phrase.swift */; };
+		CD15FF742752307800F890AB /* InterpretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD15FF732752307800F890AB /* InterpretView.swift */; };
+		CD8855FE2767B0580002DF15 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8855FD2767B0580002DF15 /* SplashView.swift */; };
+		CD8856002767BBCE0002DF15 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8855FF2767BBCE0002DF15 /* Progress.swift */; };
+		CD9705A3275926A8007CB5F6 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9705A2275926A8007CB5F6 /* AppViewModel.swift */; };
+		CD9705A727594810007CB5F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD9705A627594810007CB5F6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36B534DAA2319FA4880ED336 /* Pods_anglo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_anglo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DA07AF74FAB507089D30149 /* Pods-anglo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-anglo.release.xcconfig"; path = "Target Support Files/Pods-anglo/Pods-anglo.release.xcconfig"; sourceTree = "<group>"; };
+		CD0245BC27524D61004A2047 /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansJP-Medium.otf"; path = "../../../hayaoki/hayaoki/fonts/NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
+		CD0245BD27524D61004A2047 /* NotoSansJP-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansJP-Regular.otf"; path = "../../../../Downloads/Noto_Sans_JP/NotoSansJP-Regular.otf"; sourceTree = "<group>"; };
+		CD0245C027524EEA004A2047 /* PhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseView.swift; sourceTree = "<group>"; };
+		CD0245C427525312004A2047 /* Usecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
+		CD0245C627525ABE004A2047 /* RearrangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RearrangeView.swift; sourceTree = "<group>"; };
+		CD0245C827529052004A2047 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CD0245CA275336B5004A2047 /* Stage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stage.swift; sourceTree = "<group>"; };
+		CD0245CC275336D8004A2047 /* MockStages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStages.swift; sourceTree = "<group>"; };
+		CD0245D72753413E004A2047 /* icons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = icons.json; path = "../../../../Downloads/fontawesome-free-5.15.4-desktop/metadata/icons.json"; sourceTree = "<group>"; };
+		CD0245D927534150004A2047 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Free-Solid-900.otf"; path = "../../../../Downloads/fontawesome-free-5.15.4-desktop/otfs/Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
+		CD0245DA27534150004A2047 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Brands-Regular-400.otf"; path = "../../../../Downloads/fontawesome-free-5.15.4-desktop/otfs/Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
+		CD0245DB27534150004A2047 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Font Awesome 5 Free-Regular-400.otf"; path = "../../../../Downloads/fontawesome-free-5.15.4-desktop/otfs/Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		CD0245DF27534E9D004A2047 /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansJP-Bold.otf"; path = "../../../hayaoki/hayaoki/fonts/NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
+		CD0245E12754AD5B004A2047 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CD0245E92754ED07004A2047 /* BackPatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackPatternView.swift; sourceTree = "<group>"; };
+		CD0E75FB27C0926F00E43684 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		CD15FF482752212E00F890AB /* anglo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = anglo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD15FF4B2752212E00F890AB /* angloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = angloApp.swift; sourceTree = "<group>"; };
 		CD15FF4D2752212E00F890AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CD15FF4F2752213100F890AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD15FF522752213100F890AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CD15FF542752213100F890AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD15FF5B275222F800F890AB /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Medium.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		CD15FF5C275222F800F890AB /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Thin.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		CD15FF5D275222F800F890AB /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		CD15FF5E275222F900F890AB /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-SemiBold.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		CD15FF5F275222F900F890AB /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Black.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		CD15FF60275222F900F890AB /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		CD15FF61275222F900F890AB /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraLight.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		CD15FF62275222F900F890AB /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		CD15FF63275222F900F890AB /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-ExtraBold.ttf"; path = "../../../../Downloads/Montserrat/Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		CD15FF6E2752285A00F890AB /* Phrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
+		CD15FF732752307800F890AB /* InterpretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterpretView.swift; sourceTree = "<group>"; };
+		CD8855FD2767B0580002DF15 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		CD8855FF2767BBCE0002DF15 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
+		CD9705A2275926A8007CB5F6 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		CD9705A627594810007CB5F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E170CEB672ADF69C19E395E6 /* Pods-anglo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-anglo.debug.xcconfig"; path = "Target Support Files/Pods-anglo/Pods-anglo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +96,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD0245E82754B292004A2047 /* PolyKit in Frameworks */,
+				CD0245E52754B1EC004A2047 /* Shapes in Frameworks */,
+				CD0245D02753408F004A2047 /* FASwiftUI in Frameworks */,
+				7E874850EF93A82C41ABE383 /* Pods_anglo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47F66EE00749AFAB9A12B20D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E170CEB672ADF69C19E395E6 /* Pods-anglo.debug.xcconfig */,
+				7DA07AF74FAB507089D30149 /* Pods-anglo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CD0E75FA27C0926100E43684 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CD0E75FB27C0926F00E43684 /* IconView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		CD15FF3F2752212E00F890AB = {
 			isa = PBXGroup;
 			children = (
 				CD15FF4A2752212E00F890AB /* anglo */,
 				CD15FF492752212E00F890AB /* Products */,
+				47F66EE00749AFAB9A12B20D /* Pods */,
+				EA1D6EB4D8C444C8DBD7DE5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,11 +144,16 @@
 		CD15FF4A2752212E00F890AB /* anglo */ = {
 			isa = PBXGroup;
 			children = (
-				CD15FF4B2752212E00F890AB /* angloApp.swift */,
-				CD15FF4D2752212E00F890AB /* ContentView.swift */,
+				CD0E75FA27C0926100E43684 /* Shared */,
+				CD9705A827594823007CB5F6 /* View */,
+				CD9705A127592663007CB5F6 /* ViewModel */,
+				CD15FF6D2752282500F890AB /* Model */,
+				CD15FF702752287500F890AB /* Data */,
+				CD15FF5A275222CD00F890AB /* Fonts */,
 				CD15FF4F2752213100F890AB /* Assets.xcassets */,
-				CD15FF542752213100F890AB /* Info.plist */,
 				CD15FF512752213100F890AB /* Preview Content */,
+				CD15FF542752213100F890AB /* Info.plist */,
+				CD9705A627594810007CB5F6 /* GoogleService-Info.plist */,
 			);
 			path = anglo;
 			sourceTree = "<group>";
@@ -69,6 +166,96 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CD15FF5A275222CD00F890AB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CD15FF5C275222F800F890AB /* Montserrat-Thin.ttf */,
+				CD15FF61275222F900F890AB /* Montserrat-ExtraLight.ttf */,
+				CD15FF62275222F900F890AB /* Montserrat-Light.ttf */,
+				CD15FF60275222F900F890AB /* Montserrat-Regular.ttf */,
+				CD15FF5B275222F800F890AB /* Montserrat-Medium.ttf */,
+				CD15FF5E275222F900F890AB /* Montserrat-SemiBold.ttf */,
+				CD15FF5D275222F800F890AB /* Montserrat-Bold.ttf */,
+				CD15FF63275222F900F890AB /* Montserrat-ExtraBold.ttf */,
+				CD15FF5F275222F900F890AB /* Montserrat-Black.ttf */,
+				CD0245BD27524D61004A2047 /* NotoSansJP-Regular.otf */,
+				CD0245BC27524D61004A2047 /* NotoSansJP-Medium.otf */,
+				CD0245DF27534E9D004A2047 /* NotoSansJP-Bold.otf */,
+				CD0245DA27534150004A2047 /* Font Awesome 5 Brands-Regular-400.otf */,
+				CD0245DB27534150004A2047 /* Font Awesome 5 Free-Regular-400.otf */,
+				CD0245D927534150004A2047 /* Font Awesome 5 Free-Solid-900.otf */,
+				CD0245D72753413E004A2047 /* icons.json */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CD15FF6D2752282500F890AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD15FF6E2752285A00F890AB /* Phrase.swift */,
+				CD0245C427525312004A2047 /* Usecase.swift */,
+				CD0245CA275336B5004A2047 /* Stage.swift */,
+				CD8855FF2767BBCE0002DF15 /* Progress.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CD15FF702752287500F890AB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CD0245CC275336D8004A2047 /* MockStages.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CD4EAFCA276B3B27009AD151 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				CD4EAFCB276B3B3F009AD151 /* Loading */,
+				CD0245C027524EEA004A2047 /* PhraseView.swift */,
+				CD15FF732752307800F890AB /* InterpretView.swift */,
+				CD0245C627525ABE004A2047 /* RearrangeView.swift */,
+			);
+			path = Activities;
+			sourceTree = "<group>";
+		};
+		CD4EAFCB276B3B3F009AD151 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				CD0245E12754AD5B004A2047 /* LoadingView.swift */,
+				CD0245E92754ED07004A2047 /* BackPatternView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		CD9705A127592663007CB5F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CD9705A2275926A8007CB5F6 /* AppViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CD9705A827594823007CB5F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CD15FF4B2752212E00F890AB /* angloApp.swift */,
+				CD15FF4D2752212E00F890AB /* ContentView.swift */,
+				CD8855FD2767B0580002DF15 /* SplashView.swift */,
+				CD0245C827529052004A2047 /* HomeView.swift */,
+				CD4EAFCA276B3B27009AD151 /* Activities */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EA1D6EB4D8C444C8DBD7DE5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36B534DAA2319FA4880ED336 /* Pods_anglo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -76,15 +263,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD15FF572752213100F890AB /* Build configuration list for PBXNativeTarget "anglo" */;
 			buildPhases = (
+				E082D44BFE3FCF875B7D3691 /* [CP] Check Pods Manifest.lock */,
 				CD15FF442752212E00F890AB /* Sources */,
 				CD15FF452752212E00F890AB /* Frameworks */,
 				CD15FF462752212E00F890AB /* Resources */,
+				03C8144EF7BF7FB2FB706141 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = anglo;
+			packageProductDependencies = (
+				CD0245CF2753408F004A2047 /* FASwiftUI */,
+				CD0245E42754B1EC004A2047 /* Shapes */,
+				CD0245E72754B292004A2047 /* PolyKit */,
+			);
 			productName = anglo;
 			productReference = CD15FF482752212E00F890AB /* anglo.app */;
 			productType = "com.apple.product-type.application";
@@ -112,6 +306,11 @@
 				Base,
 			);
 			mainGroup = CD15FF3F2752212E00F890AB;
+			packageReferences = (
+				CD0245CE2753408F004A2047 /* XCRemoteSwiftPackageReference "FASwiftUI" */,
+				CD0245E32754B1EC004A2047 /* XCRemoteSwiftPackageReference "swiftui-shapes" */,
+				CD0245E62754B292004A2047 /* XCRemoteSwiftPackageReference "PolyKit" */,
+			);
 			productRefGroup = CD15FF492752212E00F890AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,20 +325,93 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD15FF6B275222F900F890AB /* Montserrat-Light.ttf in Resources */,
+				CD15FF69275222F900F890AB /* Montserrat-Regular.ttf in Resources */,
+				CD15FF67275222F900F890AB /* Montserrat-SemiBold.ttf in Resources */,
+				CD0245DD27534150004A2047 /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
+				CD15FF68275222F900F890AB /* Montserrat-Black.ttf in Resources */,
+				CD0245D82753413E004A2047 /* icons.json in Resources */,
+				CD0245BF27524D61004A2047 /* NotoSansJP-Regular.otf in Resources */,
+				CD15FF66275222F900F890AB /* Montserrat-Bold.ttf in Resources */,
+				CD0245DE27534150004A2047 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
+				CD15FF6A275222F900F890AB /* Montserrat-ExtraLight.ttf in Resources */,
 				CD15FF532752213100F890AB /* Preview Assets.xcassets in Resources */,
+				CD9705A727594810007CB5F6 /* GoogleService-Info.plist in Resources */,
+				CD0245DC27534150004A2047 /* Font Awesome 5 Free-Solid-900.otf in Resources */,
+				CD15FF64275222F900F890AB /* Montserrat-Medium.ttf in Resources */,
+				CD0245E027534E9D004A2047 /* NotoSansJP-Bold.otf in Resources */,
+				CD15FF6C275222F900F890AB /* Montserrat-ExtraBold.ttf in Resources */,
+				CD0245BE27524D61004A2047 /* NotoSansJP-Medium.otf in Resources */,
+				CD15FF65275222F900F890AB /* Montserrat-Thin.ttf in Resources */,
 				CD15FF502752213100F890AB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03C8144EF7BF7FB2FB706141 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-anglo/Pods-anglo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-anglo/Pods-anglo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-anglo/Pods-anglo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E082D44BFE3FCF875B7D3691 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-anglo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD15FF442752212E00F890AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD0245C127524EEA004A2047 /* PhraseView.swift in Sources */,
+				CD8855FE2767B0580002DF15 /* SplashView.swift in Sources */,
+				CD0245EA2754ED07004A2047 /* BackPatternView.swift in Sources */,
+				CD0245C727525ABE004A2047 /* RearrangeView.swift in Sources */,
+				CD0245C927529052004A2047 /* HomeView.swift in Sources */,
+				CD9705A3275926A8007CB5F6 /* AppViewModel.swift in Sources */,
+				CD15FF742752307800F890AB /* InterpretView.swift in Sources */,
+				CD8856002767BBCE0002DF15 /* Progress.swift in Sources */,
+				CD15FF6F2752285A00F890AB /* Phrase.swift in Sources */,
+				CD0245CB275336B5004A2047 /* Stage.swift in Sources */,
+				CD0245CD275336D8004A2047 /* MockStages.swift in Sources */,
 				CD15FF4E2752212E00F890AB /* ContentView.swift in Sources */,
 				CD15FF4C2752212E00F890AB /* angloApp.swift in Sources */,
+				CD0E75FC27C0926F00E43684 /* IconView.swift in Sources */,
+				CD0245E22754AD5B004A2047 /* LoadingView.swift in Sources */,
+				CD0245C527525312004A2047 /* Usecase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +536,15 @@
 		};
 		CD15FF582752213100F890AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E170CEB672ADF69C19E395E6 /* Pods-anglo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"anglo/Preview Content\"";
-				DEVELOPMENT_TEAM = B8YMQHUKTR;
+				DEVELOPMENT_TEAM = RN596XYAX5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = anglo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -277,8 +552,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anglo;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaoru.getit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Getit AppStore Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,12 +563,15 @@
 		};
 		CD15FF592752213100F890AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DA07AF74FAB507089D30149 /* Pods-anglo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"anglo/Preview Content\"";
-				DEVELOPMENT_TEAM = B8YMQHUKTR;
+				DEVELOPMENT_TEAM = RN596XYAX5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = anglo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -299,8 +579,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anglo;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaoru.getit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Getit AppStore Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -328,6 +610,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD0245CE2753408F004A2047 /* XCRemoteSwiftPackageReference "FASwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mattmaddux/FASwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		CD0245E32754B1EC004A2047 /* XCRemoteSwiftPackageReference "swiftui-shapes" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-shapes.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		CD0245E62754B292004A2047 /* XCRemoteSwiftPackageReference "PolyKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hexagons/PolyKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD0245CF2753408F004A2047 /* FASwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD0245CE2753408F004A2047 /* XCRemoteSwiftPackageReference "FASwiftUI" */;
+			productName = FASwiftUI;
+		};
+		CD0245E42754B1EC004A2047 /* Shapes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD0245E32754B1EC004A2047 /* XCRemoteSwiftPackageReference "swiftui-shapes" */;
+			productName = Shapes;
+		};
+		CD0245E72754B292004A2047 /* PolyKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD0245E62754B292004A2047 /* XCRemoteSwiftPackageReference "PolyKit" */;
+			productName = PolyKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD15FF402752212E00F890AB /* Project object */;
 }

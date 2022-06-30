@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FASwiftUI",
+        "repositoryURL": "https://github.com/mattmaddux/FASwiftUI.git",
+        "state": {
+          "branch": null,
+          "revision": "2e043ec545724b56df7117829f08344da4b00031",
+          "version": "1.0.4"
+        }
+      },
+      {
+        "package": "PolyKit",
+        "repositoryURL": "https://github.com/hexagons/PolyKit.git",
+        "state": {
+          "branch": null,
+          "revision": "9f1f488716b4810674b7e1cc69ddb61361d1ed77",
+          "version": "1.0.3"
+        }
+      },
+      {
+        "package": "QGrid",
+        "repositoryURL": "https://github.com/Q-Mobile/QGrid",
+        "state": {
+          "branch": null,
+          "revision": "804e59f8cb9f66b226685e9369fb82029742b83a",
+          "version": "0.1.4"
+        }
+      },
+      {
+        "package": "Shapes",
+        "repositoryURL": "https://github.com/spacenation/swiftui-shapes.git",
+        "state": {
+          "branch": null,
+          "revision": "c58b15c37eae9bd20525c6daa93a06a689ca75cb",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Progress {
+    var word: String
+    var score: [Int]
+    var weaks: [String]
+}

@@ -32,7 +32,7 @@ struct PhraseView: View {
             if(filled){
                 HStack(spacing:16){
                     VStack(alignment: .leading, spacing:8){
-                        Text("Phrases - Get Pt.1")
+                        Text("\(ActivityTypeText(appViewModel.activityType)) - \(words[appViewModel.selectedWordIndex].capitalizingFirstLetter()) Pt.\(appViewModel.typeIndex + 1)")
                             .font(.custom("Montserrat-Medium", size:14))
                             .foregroundColor(Color("txt"))
                         
@@ -108,12 +108,6 @@ struct PhraseView: View {
         .onAppear(){
             self.phrases = appViewModel.phrases
             filled = true
-            do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: AVAudioSession.CategoryOptions.mixWithOthers)
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print(error)
-            }
             self.speechText(phrases[num].phrase)
         }
     }

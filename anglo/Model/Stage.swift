@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Stage {
+    var word: String
+    var roadMap: [Int]
+}
